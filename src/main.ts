@@ -1,5 +1,7 @@
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
+
+// Native nodejs modules
 import * as fs from 'fs';
 
 async function run() {
@@ -13,10 +15,12 @@ async function run() {
     // Rename file
     fs.renameSync("README.md", "__README.md");
 
-    // Git status
+    // Git commands
+    await exec.exec("git", ["config", "--global" , "user.email", "replace-bot@github.com"]);
+    await exec.exec("git", ["config", "--global" , "user.name", "Find & Replace GitHub Action"]);
+
     await exec.exec("git", ["status"]);
-    await exec.exec("git", ["add", "."]);
-    await exec.exec("git", ["commit", "-m", "Can we commit?"]);
+    await exec.exec("git", ["commit", "-m", "Can we commit?", "-a"]);
     await exec.exec("git", ["push origin"]);
 
   } catch (error) {
