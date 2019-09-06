@@ -21,7 +21,9 @@ async function run() {
 
     await exec.exec("git", ["status"]);
     await exec.exec("git", ["commit", "-m", "Can we commit?", "-a"]);
-    await exec.exec("git", ["push origin"]);
+
+    await exec.exec("git", ["remote", "-v"]);
+    await exec.exec("git", ["push", "origin/master"]);
 
   } catch (error) {
     core.setFailed(error.message);
