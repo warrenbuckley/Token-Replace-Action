@@ -1,10 +1,11 @@
-name: 'Node 12 Template Action'
-description: 'Get started with Node actions'
-author: 'GitHub'
+name: 'Find & Replace'
+description: 'Finds a token in filename and files contents and will replace with a value'
+author: 'WarrenBuckley'
 inputs:
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  find:
+    description: 'Value to find such as {{MyPlaceholder}}'
+  replace:
+    description: 'Value we replace with'
 runs:
   using: 'node12'
   main: 'lib/main.js'
